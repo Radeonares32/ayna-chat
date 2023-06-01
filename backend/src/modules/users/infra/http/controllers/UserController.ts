@@ -17,7 +17,7 @@ export class UserController {
     });
   };
   getFindByUsernameUser: Handler = async (req, res) => {
-    const { username } = req.body;
+    const { username } = req.params;
     res.json({
       user: await this.userService.findByUsernameUser(username),
     });

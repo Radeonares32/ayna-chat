@@ -28,7 +28,9 @@ export class UserRepository implements IUsersRepository {
   findByUsername(username: string): Promise<ICreateUserDTO | undefined> {
     return new Promise(async (resolve, reject) => {
       try {
-        const user = await UserModel.find({ username });
+        const user = await UserModel.find({ username }).catch((err) =>
+          console.log(err)
+        );
         resolve(user as unknown as ICreateUserDTO | undefined);
       } catch (err) {
         reject({ message: err });
