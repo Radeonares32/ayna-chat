@@ -11,6 +11,6 @@ export const mongoConnection = async () => {
     );
     console.log("connected mongodb !");
   } catch (exception) {
-    console.log("not connection ");
+    console.log("not connection ", exception);
   }
 };
