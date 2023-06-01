@@ -26,7 +26,14 @@ export class UserRepository implements IUsersRepository {
     });
   }
   findByUsername(username: string): Promise<ICreateUserDTO | undefined> {
-    throw new Error("Method not implemented.");
+    return new Promise(async (resolve, reject) => {
+      try {
+        const user = await UserModel.find({ username });
+        resolve(user as ICreateUserDTO | undefine);
+      } catch (err) {
+        reject({ message: err });
+      }
+    });
   }
   create(data: ICreateUserDTO): Promise<{ message: string }> {
     throw new Error("Method not implemented.");
