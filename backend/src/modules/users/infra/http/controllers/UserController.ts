@@ -22,4 +22,10 @@ export class UserController {
       user: await this.userService.findByUsernameUser(username),
     });
   };
+  postCreateUser: Handler = async (req, res) => {
+    const { data } = req.body;
+    res.json({
+      user: await this.userService.createUser(data),
+    });
+  };
 }
