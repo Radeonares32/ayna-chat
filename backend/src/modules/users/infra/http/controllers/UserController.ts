@@ -7,7 +7,13 @@ export class UserController {
   userService: UserService = new UserService();
   getFindAllUser: Handler = async (_req, res) => {
     res.json({
-      user: this.userService.findAllUser(),
+      user: await this.userService.findAllUser(),
+    });
+  };
+  getFindByIdUser: Handler = async (req, res) => {
+    const { id } = req.params;
+    res.json({
+      user: await this.userService.findByIdUser(id),
     });
   };
 }
