@@ -36,6 +36,13 @@ export class UserRepository implements IUsersRepository {
     });
   }
   create(data: ICreateUserDTO): Promise<{ message: string }> {
-    throw new Error("Method not implemented.");
+    return new Promise(async (resolve, reject) => {
+      try {
+        await UserModel.create({ data });
+        resolve({ message: "Success Created User" });
+      } catch (err) {
+        reject({ message: err });
+      }
+    });
   }
 }
