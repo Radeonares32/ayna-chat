@@ -12,4 +12,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api", userRoutes);
 
-server.listen(3000);
+//db
+import { mongoConnection } from "../db/mongodb";
+
+server.listen(3000, () => {
+  mongoConnection()
+    .then(() => console.log("success connection"))
+    .catch((err) => {
+      console.log(err);
+    });
+});
