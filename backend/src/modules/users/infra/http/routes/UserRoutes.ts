@@ -12,3 +12,4 @@ export const getFindByIdUserRoute = app.get('/:id',userController.getFindByIdUse
 export const getFindByUsernameUserRoute = app.get('/findByUsername',userController.getFindByUsernameUser)
 
 //Post
+export const postCreateUserRoute = app.post('/create',userController.postCreateUser)
