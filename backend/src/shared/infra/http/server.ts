@@ -9,6 +9,7 @@ const server = http.createServer(app);
 import { userRoutes } from "./routes/routes";
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json())
 
 app.use("/api", userRoutes);
 

@@ -1,4 +1,4 @@
 export interface ICreateUserDTO {
     username:string
-    message:[{}]
+    password:string
 }

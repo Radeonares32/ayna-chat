@@ -38,7 +38,10 @@ export class UserRepository implements IUsersRepository {
   create(data: ICreateUserDTO): Promise<{ message: string }> {
     return new Promise(async (resolve, reject) => {
       try {
-        await UserModel.create({ data });
+        await UserModel.create({
+          username: data.username,
+          password: data.password,
+        }).catch((err) => console.log(err));
         resolve({ message: "Success Created User" });
       } catch (err) {
         reject({ message: err });
