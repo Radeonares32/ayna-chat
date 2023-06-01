@@ -29,4 +29,7 @@ export class UserService {
   ): Promise<ICreateUserDTO | undefined> {
     return this.userRepository.findByUsername(username);
   }
+  async createUser(data: ICreateUserDTO): Promise<{ message: string }> {
+    return await this.userRepository.create(data);
+  }
 }
