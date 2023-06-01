@@ -5,7 +5,7 @@ import { ICreateUserDTO } from "../../../../dtos/ICreateUserDTO";
 
 const UserSchema = new Schema<ICreateUserDTO>({
   username: String,
-  message: [{}],
+  password:String,
 });
 
 export const UserModel = model("user", UserSchema);
