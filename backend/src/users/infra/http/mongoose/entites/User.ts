@@ -1,9 +1,9 @@
 import { model, Schema } from "mongoose";
 
 //User Entity
-import { IUser } from "../../../../entites/IUserEntity";
+import { ICreateUserDTO } from "../../../../dtos/ICreateUserDTO";
 
-const UserSchema = new Schema<IUser>({
+const UserSchema = new Schema<ICreateUserDTO>({
   username: String,
   message: [{}],
 });
