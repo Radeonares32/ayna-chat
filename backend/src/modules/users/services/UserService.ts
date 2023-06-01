@@ -14,14 +14,19 @@ export class UserService {
   }
   async findByIdUser(
     id: string
-  ): Promise<ICreateUserDTO | { message: string }> {
+  ): Promise<ICreateUserDTO | { message: string } | undefined> {
     const isValidId = validations.isIdValidation(id);
     if (isValidId.isValid) {
-      return await this.findByIdUser(id);
+      return await this.userRepository.findById(id);
     } else {
       return {
         message: isValidId.message,
       };
     }
+  }
+  async findByUsernameUser(
+    username: string
+  ): Promise<ICreateUserDTO | undefined> {
+    return this.userRepository.findByUsername(username);
   }
 }
