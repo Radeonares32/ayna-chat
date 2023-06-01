@@ -16,4 +16,10 @@ export class UserController {
       user: await this.userService.findByIdUser(id),
     });
   };
+  getFindByUsernameUser: Handler = async (req, res) => {
+    const { username } = req.body;
+    res.json({
+      user: await this.userService.findByUsernameUser(username),
+    });
+  };
 }
