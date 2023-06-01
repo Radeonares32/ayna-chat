@@ -29,7 +29,7 @@ export class UserRepository implements IUsersRepository {
     return new Promise(async (resolve, reject) => {
       try {
         const user = await UserModel.find({ username });
-        resolve(user as ICreateUserDTO | undefine);
+        resolve(user as unknown as ICreateUserDTO | undefined);
       } catch (err) {
         reject({ message: err });
       }
