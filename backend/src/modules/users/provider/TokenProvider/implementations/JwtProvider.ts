@@ -10,7 +10,7 @@ configs.dotenvConfig();
 
 export class TokenProvider implements ITokenProvider {
   generateToken(payload: string): Promise<Jwt> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       try {
         const token: Jwt | any = sign(
           payload,
@@ -23,7 +23,7 @@ export class TokenProvider implements ITokenProvider {
     });
   }
   verifyToken(token: string): Promise<JwtPayload> {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       try {
         const verifyToken: JwtPayload | any = verify(
           token,
@@ -36,6 +36,13 @@ export class TokenProvider implements ITokenProvider {
     });
   }
   decodeToken(token: string): Promise<JwtPayload> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      try {
+        const decodeToken: JwtPayload | any = decode(token);
+        resolve(decode);
+      } catch (err) {
+        reject({ message: err });
+      }
+    });
   }
 }
