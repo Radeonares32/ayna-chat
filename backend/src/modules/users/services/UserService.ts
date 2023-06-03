@@ -6,7 +6,6 @@ import { UserRepository } from "../infra/http/mongoose/repositories/UserReposito
 
 //validations
 import { validations } from "../../../shared/validations/validations";
-
 export class UserService {
   private userRepository: UserRepository = new UserRepository();
   async findAllUser(): Promise<ICreateUserDTO[]> {

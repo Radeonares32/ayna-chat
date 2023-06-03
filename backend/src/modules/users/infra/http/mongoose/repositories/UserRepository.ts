@@ -4,7 +4,10 @@ import { UserModel } from "../entites/User";
 import { IUsersRepository } from "../../../../repositories/IUsersRepository";
 import { ICreateUserDTO } from "../../../../dtos/ICreateUserDTO";
 
+//providers
+import { providers } from "../../../../provider/provider";
 export class UserRepository implements IUsersRepository {
+  bcryptHashProvider = new providers.BCryptHashProvider();
   findAll(): Promise<ICreateUserDTO[]> {
     return new Promise(async (resolve, reject) => {
       try {
@@ -40,9 +43,10 @@ export class UserRepository implements IUsersRepository {
   create(data: ICreateUserDTO): Promise<{ message: string }> {
     return new Promise(async (resolve, reject) => {
       try {
+        const hash = this.bcryptHashProvider.generateHash(data.password);
         await UserModel.create({
           username: data.username,
-          password: data.password,
+          password: hash,
         }).catch((err) => console.log(err));
         resolve({ message: "Success Created User" });
       } catch (err) {
